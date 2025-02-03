@@ -53,3 +53,26 @@ Complexity isn’t caused by a single catastrophic error; it accumulates in lots
 
 It’s easy to convince yourself that a little bit of complexity introduced by your current change is no big deal. However, if every developer takes this approach for every change, complexity accumulates rapidly. Once complexity has accumulated, it is hard to eliminate.
 
+# Chapter 3: Working Code Isn’t Enought (Strategic vs. Tactical Programming)
+
+## Tactical Programming
+
+The problem with **tactical programming** is that it is short-sighted. If you’re programming tactically, you’re trying to finish a task as quickly as possible. As a result, planning for the future isn’t a priority. You don’t spend much time looking for the best design; you just want to get something working soon. This is how systems become complicated.
+
+The **tactical tornado** is a prolific programmer who pumps out code far faster than others but works in a totally tactical fashion. In some organizations, management treats tactical tornadoes as heroes. However, tactical tornadoes leave behind a wake of destruction. Typically, other engineers must clean up the messes left behind by the tactical tornado, which makes it appear that those engineers are making slower progress than the tactical tornado.
+
+## Strategic Programming
+
+The first step towards becoming a good software designer is to realize that working code isn’t enough.
+
+The most important thing is the long-term structure of the system. Most of the code in any system is written by extending the existing code base, so your most important job as a developer is to facilitate those future extensions.
+
+Your primary goal must be to produce a great design, which also happens to work. This is **strategic programming**.
+
+Strategic programming requires an investment mindset. Rather than taking the fastest path to finish your current project, you must invest time to improve the design of the system. These investments will slow you down a bit in the short term, but they will speed you up in the long term.
+
+Try to imagine a few ways in which the system might need to be changed in the future and make sure that will be easy with your design. Writing good documentation is another example of a proactive investment.
+
+## Startups and investment
+
+Many startups take a tactical approach, spending little effort on design and even less on cleanup when problems pop up. They rationalize this with the thought that, if they are successful, they’ll have enough money to hire extra engineers to clean things up. If you are in a company leaning in this direction, you should realize that once a code base turns to spaghetti, it is nearly impossible to fix.
