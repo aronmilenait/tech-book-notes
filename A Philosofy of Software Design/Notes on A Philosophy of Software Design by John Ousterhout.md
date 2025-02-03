@@ -16,3 +16,40 @@ The waterfall model rarely works well for software. Software systems are intrins
 Most software development projects today use an incremental approach such as **agile development**, in which the initial design focuses on a small subset of the overall functionality. By spreading out the design in this way, problems with the initial design can be fixed while the system is still small; later features benefit from experience gained during the implementation of earlier features, so they have fewer problems.
 
 As a software developer, you should always be on the lookout for opportunities to improve the design of the system you are working on.
+
+# Chapter 2: The Nature of Complexity
+
+**Complexity** is anything related to the structure of a software system that makes it hard to understand and modify the system. In a complex system, it takes a lot of work to implement even small improvements. In a simple system, larger improvements can be implemented with less effort.
+
+Complexity is determined by the activities that are most common. If a system has a few parts that are very complicated, but those parts almost never need to be touched, then they don’t have much impact on the overall complexity of the system.
+
+ Your job as a developer is not just to create code that you can work with easily, but to create code that others can also work with easily.
+
+## Symptoms of complexity
+
+1. **Change amplification:** a seemingly simple change requires code modifications in many different places.
+2. **Cognitive load:** refers to how much a developer needs to know in order to complete a task. A higher cognitive load means that developers have to spend more time learning the required information, and there is a greater risk of bugs because they have missed something important.
+3. **Unknown unknowns:** is not obvious which pieces of code must be modified to complete a task, or what information a developer must have to carry out the task successfully.
+
+Of the three manifestations of complexity, unknown unknowns are the worst. An unknown unknown means that there is something you need to know, but there is no way for you to find out what it is, or even whether there is an issue. The only way to be certain is to read every line of code in the system.
+
+One of the most important goals of good design is for a system to be obvious. An obvious system is one where a developer can make a quick guess about what to do, without thinking very hard, and yet be confident that the guess is correct.
+
+## Causes of complexity
+
+Complexity is caused by two things: dependencies and obscurity.
+
+A **dependency** exists when a given piece of code cannot be understood and modified in isolation; the code relates in some way to other code, and the other code must be considered and/or modified if the given code is changed.
+
+One of the goals of software design is to reduce the number of dependencies and to make the dependencies that remain as simple and obvious as possible.
+
+**Obscurity** occurs when important information is not obvious. A simple example is a variable name that is so generic that it doesn’t carry much useful information (e.g., time). Or, the documentation for a variable might not specify its units, so the only way to find out is to scan code for places where the variable is used.
+
+If we can find design techniques that minimize dependencies and obscurity, then we can reduce the complexity of software.
+
+## Complexity is incremental
+
+Complexity isn’t caused by a single catastrophic error; it accumulates in lots of small chunks.
+
+It’s easy to convince yourself that a little bit of complexity introduced by your current change is no big deal. However, if every developer takes this approach for every change, complexity accumulates rapidly. Once complexity has accumulated, it is hard to eliminate.
+
