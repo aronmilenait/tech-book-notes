@@ -76,3 +76,47 @@ Try to imagine a few ways in which the system might need to be changed in the fu
 ## Startups and investment
 
 Many startups take a tactical approach, spending little effort on design and even less on cleanup when problems pop up. They rationalize this with the thought that, if they are successful, they’ll have enough money to hire extra engineers to clean things up. If you are in a company leaning in this direction, you should realize that once a code base turns to spaghetti, it is nearly impossible to fix.
+
+# Chapter 4: Modules Should Be Deep
+
+## Modular Design
+
+In **modular design**, a software system is decomposed into a collection of modules
+that are relatively independent. Modules can take many forms, such as **classes, subsystems, or services**. In an ideal world, each module would be completely independent of the others: a developer could work in any of the modules without knowing anything about any of the other modules.
+
+This ideal is not achievable. Modules must work together by calling each others’s functions or methods. There will be **dependencies** between the modules: if one module changes, other modules may need to change to match.
+
+In order to manage dependencies, we think of each module in two parts: an interface and an implementation. The **interface** consists of everything that a developer working in a different module must know in order to use the given module. The **implementation** consists of the code that carries out the promises made by the interface. 
+
+The best modules are those whose interfaces are much simpler than their implementations. Such modules have two advantages. First, a simple interface minimizes the complexity that a module imposes on the rest of the system. Second, if a module is modified in a way that does not change its interface, then no other module will be affected by the modification.
+
+##  What’s in an interface?
+
+The **interface** to a module contains two kinds of information: formal and
+informal. The **formal** parts of an interface are specified explicitly in the code, and
+some of these can be checked for correctness by the programming language.  The
+**informal** parts of an interface include its high-level behavior, such as the fact that
+a function deletes the file named by one of its arguments.
+
+## Abstractions
+
+An **abstraction** is a simplified view of an entity, which omits unimportant details. 
+
+In modular programming, each module provides an abstraction in form of its interface. The interface presents a simplified view of the module’s functionality: the more unimportant details that are omitted from an abstraction, the better. 
+
+An abstraction can go wrong in two ways. First, it can include details that are not really
+important. The second error is when an abstraction omits details that really are important. An abstraction that omits important details is a false abstraction: it might appear simple, but in reality it isn’t. 
+
+## Deep modules
+
+The best modules are those that provide powerful functionality yet have simple interfaces. I use the term deep to describe such modules.
+
+**Module depth** is a way of thinking about cost versus benefit. The benefit provided by a module is its functionality. The cost of a module is its interface. A module’s interface represents the complexity that the module imposes on the rest of the system. The best modules are those with the greatest benefit and the least cost. 
+
+## Shallow modules
+
+A **shallow module** is one whose interface is complicated relative to the functionality it provides. Shallow modules don’t help much in the battle against complexity, because the benefit they provide is negated by the cost of learning and using their interfaces. 
+
+## Classitis
+
+The extreme of the “classes should be small” approach is a syndrome I call **classitis**, which stems from the mistaken view that “classes are good, so more classes are better.” In systems suffering from classitis, developers are encouraged to minimize the amount of functionality in each new class. Classitis may result in classes that are individually simple, but it increases the complexity of the overall system.
