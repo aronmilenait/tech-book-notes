@@ -1,5 +1,13 @@
 # Notes on A Philosophy of Software Design by John Ousterhout
 
+# About these notes
+
+This file contains fragments of _Notes on A Philosophy of Software Design_ by John Ousterhout, which serve as a summary. I follow this approach to make note-taking easier and faster, as well as to preserve the author's exact words.
+
+I've gathered the concepts I consider the most important from the book and organized them using the same headings as the author, so it's easier to know where they come from.
+
+I strongly recommend reading the entire book—it's amazing, and I learned a lot from it. However, if you just want to read a summary to incorporate the most important concepts, these notes are for you! They are also useful if you have already read it and want to have some notes to check whenever you need them.
+
 # Chapter 1: Introduction
 
 Writing computer software is one of the purest creative activities in the history of the human race. Programmers aren’t bound by practical limitations such as the laws of physics; we can create exciting virtual worlds with behaviors that could never exist in the real world. 
