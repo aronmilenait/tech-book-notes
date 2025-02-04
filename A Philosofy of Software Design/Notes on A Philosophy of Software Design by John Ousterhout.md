@@ -128,3 +128,43 @@ A **shallow module** is one whose interface is complicated relative to the funct
 ## Classitis
 
 The extreme of the “classes should be small” approach is a syndrome I call **classitis**, which stems from the mistaken view that “classes are good, so more classes are better.” In systems suffering from classitis, developers are encouraged to minimize the amount of functionality in each new class. Classitis may result in classes that are individually simple, but it increases the complexity of the overall system.
+
+# Chapter 5: Information Hiding (and Leakage)
+
+## Information hiding
+
+The most important technique for achieving deep modules is **information hiding**. Each
+module should encapsulate a few pieces of knowledge, which represent **design decisions**. The knowledge is embedded in the module’s implementation but does not appear in its interface, so it is not visible to other modules.
+
+The information hidden within a module usually consists of details about how to implement some mechanism. Here are some examples:
+
+- How to implement the TCP network protocol.
+- How to parse JSON documents.
+
+The hidden information includes data structures and algorithms related to the mechanism. It can also include lower-level details, and it can include higher-level concepts that are more abstract.
+
+Information hiding reduces complexity in two ways. First, it simplifies the interface to a module. The interface reflects a simpler, more abstract view of the module’s functionality and hides the details; this reduces the cognitive load on developers who use the module. Second, information hiding makes it easier to evolve the system. If a piece of information is hidden, there are no dependencies on that information outside the module containing the information, so a design change related to that information will affect only the one module.
+
+Hiding variables and methods in a class by declaring them private isn’t the same thing as information hiding.  However, information about the private items can still be exposed through public methods such as getter and setter methods. 
+
+The best form of information hiding is when information is totally hidden within a module, so that it is irrelevant and invisible to users of the module.
+
+## Information leakage
+
+**Information leakage** occurs when a design decision is reflected in multiple modules. This creates a dependency between the modules: any change to that design decision will require changes to all of the involved modules.
+
+If you encounter information leakage between classes, ask yourself “How can I reorganize these classes so that this particular piece of knowledge only affects a single class?” If the affected classes are relatively small and closely tied to the leaked information, it may make sense to merge them into a single class. Another possible approach is to pull the information out of all of the affected classes and create a new class that encapsulates just that information.
+
+## Temporal decomposition
+
+One common cause of information leakage is a design style I call **temporal decomposition**. In temporal decomposition, the structure of a system corresponds to the time order in which operations will occur. Consider an application that reads a file in a particular format, modifies the contents of the file, and then writes the file out again. With temporal decomposition, this application might be broken into three classes: one to read the file, another to perform the modifications, and a third to write out the new version. Both the file reading and file writing steps have knowledge about the file format, which results in information leakage. The solution is to combine the core mechanisms for reading and writing files into a single class.
+
+When designing modules, focus on the knowledge that’s needed to perform each task, not the order in which tasks occur.
+
+## Information hiding within a class
+
+Try to design the private methods within a class so that each method encapsulates some information or capability and hides it from the rest of the class. In addition, try to minimize the number of places where each instance variable is used. If you can reduce the number of places where a variable is used, you will eliminate dependencies within the class and reduce its complexity.
+
+## Taking it too far
+
+Information hiding only makes sense when the information being hidden is not needed outside its module. If the information is needed outside the module, then you must not hide it. 
