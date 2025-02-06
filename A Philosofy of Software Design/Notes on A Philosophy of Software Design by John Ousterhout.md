@@ -168,3 +168,35 @@ Try to design the private methods within a class so that each method encapsulate
 ## Taking it too far
 
 Information hiding only makes sense when the information being hidden is not needed outside its module. If the information is needed outside the module, then you must not hide it. 
+
+# Chapter 6: General-Purpose Modules are Deeper
+
+One of the most common decisions that you will face when designing a new module is whether to implement it in a **general-purpose** or **special-purpose** fashion. Some might argue that you should take a general-purpose approach, in which you implement a mechanism that can be used to address a broad range of problems.
+
+It’s hard to predict the future needs of a software system, so a general-purpose solution might include facilities that are never actually needed. If you implement something that is too general-purpose, it might not do a good job of solving the particular problem you have today. 
+
+## Make classes somewhat general-purpose
+
+The module’s functionality should reflect your current needs, but its interface should not. Instead, the interface should be general enough to support multiple uses. 
+
+Don’t get carried away and build something so **general-purpose** that it is difficult to use for your current needs.
+
+The most important benefit of the general-purpose approach is that it results in simpler and deeper interfaces than a special-purpose approach.
+
+## Generality leads to better information hiding
+
+One of the most important elements of software design is determining who needs to know what, and when. When the details are important, it is better to make them explicit and as obvious as possible.
+
+## Questions to ask yourself
+
+Here are some questions you can ask yourself, which will help you to find the right balance between general-purpose and special-purpose for an interface.
+
+**What is the simplest interface that will cover all my current needs?** If you have to introduce lots of additional arguments in order to reduce the number of methods, then you may not really be simplifying things.
+
+**In how many situations will this method be used?** See if you can replace several special-purpose methods with a single general-purpose method.
+
+**Is this API easy to use for my current needs?** This question can help you to determine when you have gone too far in making an API simple and general-purpose. If you have to write a lot of additional code to use a class for your current purpose, that’s a red flag that the interface doesn’t provide the right functionality. 
+
+## Conclusion
+
+General-purpose interfaces have many advantages over special-purpose ones. They tend to be simpler, with fewer methods that are deeper. They also provide a cleaner separation between classes, whereas special-purpose interfaces tend to leak information between classes. Making your modules somewhat general-purpose is one of the best ways to reduce overall system complexity.
